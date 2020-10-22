@@ -30,6 +30,14 @@ const Review = () => {
     });
   };
 
+  const randomPerson = () => {
+    let random = Math.floor(Math.random() * people.length);
+    if (random === index) {
+      random = index + 1;
+    }
+    setIndex(checkNumber(random));
+  };
+
   return (
     <article className="review">
       <div className="img-container">
@@ -49,13 +57,16 @@ const Review = () => {
           <FaChevronRight />
         </button>
       </div>
-      <button className="random-btn">Surprise Me</button>
+      <button className="random-btn" onClick={randomPerson}>
+        Surprise Me
+      </button>
     </article>
   );
 };
 
 export default Review;
 
-// create a function that will return to either the beginning or the end of the array based on index position so it doesn't return an error
-// in the checkNumber function, create conditions that check the position of the state value and return to either the end of the array or the beginning
-// invoke checkNumber function in previousPerson and nextPerson function with its parameter of the stored variable inside the checkNumber function
+// create a function that will choose a random card
+// the function will use the math functions to randomize a number and store it into a variable
+// set a condition that if the variable equals to the current state value then add one to that variable
+// return the state fucnction that will invoke the checkNumber with random in its parameter
