@@ -6,17 +6,27 @@ const Review = () => {
   const [index, setIndex] = useState(0);
   const { name, job, image, text } = people[index];
 
+  const checkNumber = (number) => {
+    if (number > people.length - 1) {
+      return 0;
+    }
+    if (number < 0) {
+      return people.length - 1;
+    }
+    return number;
+  };
+
   const previousPerson = () => {
     setIndex((index) => {
       let oldIndex = index - 1;
-      return oldIndex;
+      return checkNumber(oldIndex);
     });
   };
 
   const nextPerson = () => {
     setIndex((index) => {
       let newIndex = index + 1;
-      return newIndex;
+      return checkNumber(newIndex);
     });
   };
 
@@ -46,8 +56,6 @@ const Review = () => {
 
 export default Review;
 
-// creating functions for the button to shift through the cards left and right
-// in those functions we would want to call the state function setIndex
-// the parameter for the state function will be the index because you want to access the current state value
-// and whatever you return will be the new current state value (store in new variable and add one)
-//
+// create a function that will return to either the beginning or the end of the array based on index position so it doesn't return an error
+// in the checkNumber function, create conditions that check the position of the state value and return to either the end of the array or the beginning
+// invoke checkNumber function in previousPerson and nextPerson function with its parameter of the stored variable inside the checkNumber function
